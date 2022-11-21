@@ -16,7 +16,13 @@ function apiFetch(city) {
 
         })
 }
+function apiFetch(location) {
+    var url = `https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}`
+    var { lat } = location;
+    var { lon } = location;
+    var city = location.name
 
+}
 
 searchBtn.addEventListener("click", (e) => {
     e.preventDefault()
