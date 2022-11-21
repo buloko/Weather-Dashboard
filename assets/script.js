@@ -4,6 +4,10 @@ var weatherAPIRootURL = `"http://api.openweathermap.org`;
 var APIKey = "d3d868c125c76948db80ecf5668f6693";
 var inputEL = document.querySelector("#city-input");
 var searchBtn = document.querySelector("#search-btn")
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
 // function that gets us the specific cities weather information
 function fetchWeather(city) {
     var url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}`
