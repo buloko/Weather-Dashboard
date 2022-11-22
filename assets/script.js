@@ -5,8 +5,8 @@ var APIKey = "d3d868c125c76948db80ecf5668f6693";
 var inputEL = document.querySelector("#city-input");
 var searchBtn = document.querySelector("#search-btn")
 
-dayjs.extend(utc);
-dayjs.extend(timezone);
+// dayjs.extend(window.dayjs_plugin_utc);
+// dayjs.extend(window_.dayjs_plugin_timezone);
 
 // function that gets us the specific cities weather information
 function fetchWeather(city) {
