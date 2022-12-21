@@ -32,5 +32,5 @@ searchBtn.addEventListener("click", (e) => {
     e.preventDefault()
     var userInput = inputEL.value
     console.log(userInput);
-    apiFetch(userInput);
-})
+    // apiFetch(userInput);
+});
