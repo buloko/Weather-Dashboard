@@ -1,9 +1,13 @@
 //Global Variables
-var searchHistory = [];
-var weatherAPIRootURL = `"http://api.openweathermap.org`;
 var APIKey = "d3d868c125c76948db80ecf5668f6693";
+var cityEl = document.querySelector("#city");
+var tempEl = document.querySelector("#temp");
+var windEl = document.querySelector("#wind");
+var humidityEl = document.querySelector("#humid");
+var weatherAPIRootURL = `"http://api.openweathermap.org`;
 var inputEL = document.querySelector("#city-input");
 var searchBtn = document.querySelector("#search-btn")
+var searchHistory = [];
 
 // dayjs.extend(window.dayjs_plugin_utc);
 // dayjs.extend(window_.dayjs_plugin_timezone);
