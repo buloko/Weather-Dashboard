@@ -3,14 +3,11 @@ header{
     margin-bottom: 3vh;
 }
 
-
-
 #title{
     color: whitesmoke !important;
-    text-align: center;
+    text-align:center
 }
 
-
 .row-div{
-    margin-left: 5vw;
+    margin-left: 5vh
 }

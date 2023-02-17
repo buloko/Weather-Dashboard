@@ -16,8 +16,6 @@ function fetchWeather(city) {
             return response.json()
         }).then((data) => {
             console.log(data);
-
-
         })
 }
 function fetchWeather(location) {
@@ -25,7 +23,6 @@ function fetchWeather(location) {
     var { lat } = location;
     var { lon } = location;
     var city = location.name;
-
 }
 
 searchBtn.addEventListener("click", (e) => {
