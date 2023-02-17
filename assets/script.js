@@ -18,10 +18,13 @@ function fetchWeather(city) {
     var url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}`
     fetch(url)
         .then((response) => {
-            return response.json()
-        }).then((data) => {
-            console.log(data);
+            return response.json();
         })
+        .then(function (fiveDayData) {
+            fiveDayWea.textContent = "";
+            console.log(fiveDayData)
+        }
+        
 }
 function fetchWeather(location) {
     var url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid={API key}`
