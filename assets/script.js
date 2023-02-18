@@ -25,9 +25,12 @@ function fetchWeather(cityEl) {
     })
     .then(function (currentData){
         console.log(currentData);
-        cityEl.textContent =
-
+        cityEl.textContent = 
+              currentData.name + moment(currentData.dt, "X ").format("MM/DD/YYYY");
+            var img = document.createElement("img");
+            img.src = 
     }
+
     .catch(() => {
       MessageChannel.textContent = "Please search for a valid city";
     });
