@@ -14,24 +14,27 @@ var searchHistory = [];
 // dayjs.extend(window_.dayjs_plugin_timezone);
 
 // function that gets us the specific cities weather information
-function fetchWeather(city) {
-    var url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}`
+function fetchWeather(cityEl) {
+    var url = `https://api.openweathermap.org/data/2.5/weather?q=${cityEl}&appid=${APIKey}`
     fetch(url)
         .then((response) => {
             return response.json();
         })
-        .then(function (fiveDayData) {
-            fiveDayWea.textContent = "";
-            console.log(fiveDayData)
-        }
+        .then(function (response) {
+            return response.json();
+        })
+        .catch(() => {
+            MessageChannel.textContent = "Please search for a valid city";
+        });
         
 }
-function fetchWeather(location) {
+function fetchWeather(lat,lon) {
     var url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid={API key}`
-    var { lat } = location;
-    var { lon } = location;
-    var city = location.name;
-}
+    fetch(url)
+    .then((response) => {
+        return response.json
+    }
+   
 
 searchBtn.addEventListener("click", (e) => {
     e.preventDefault()
