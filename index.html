@@ -21,13 +21,22 @@
           <input type="text" id="city-input" class="form-control" placeholder="Search for city"
             aria-label="Recipient's username" aria-describedby="button-addon2">
           <button class="btn btn-outline-secondary" type="button" id="search-btn">Search</button>
-  </header>
-
-
+        </header>
+      <div class="card text-center">
+        <div class="card-header">
+        Current Weather
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Temperature</h5>
+          <p class="card-text">Humidity:</p>
+          <p class="card-text">Wind Speed:</p>
+        </div>
+        <div class="card-footer text-muted">
+          2 days ago
+        </div>
+      </div>
   <div class="container main-weather"></div>
   <div class="container forecast"></div>
-
-
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
   <script src="./assets/script.js"></script>
 </body>
