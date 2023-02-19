@@ -9,7 +9,8 @@
  */
 
  html {
-    line-height: 1.15; /* 1 */
+      font-family: 'Courier New', Courier, monospace;
+      line-height: 1.15; /* 1 */
     -webkit-text-size-adjust: 100%; /* 2 */
   }
   
@@ -146,7 +147,7 @@
    */
   
   img {
-    border-style: none;
+    border: style 0;
   }
   
   /* Forms
@@ -346,4 +347,14 @@
   
   [hidden] {
     display: none;
+  }
+
+  table{
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  td,
+  th {
+    padding:0;
   }
