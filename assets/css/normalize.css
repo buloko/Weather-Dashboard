@@ -59,6 +59,12 @@
      vertical-align: baseline; /* 2 */
    }
    
+   audio:not([controls]) {
+    display: none;
+    height: 0;
+  }
+  
+
   h1 {
     font-size: 2em;
     margin: 0.67em 0;
@@ -99,6 +105,10 @@
     background-color: transparent;
   }
   
+  a:active
+  a:hover{
+    outline: 0;
+  }
   /**
    * 1. Remove the bottom border in Chrome 57-
    * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
@@ -119,6 +129,9 @@
     font-weight: bolder;
   }
   
+  dfn{
+    font-style: italic;
+  }
   /**
    * 1. Correct the inheritance and scaling of font size in all browsers.
    * 2. Correct the odd `em` font sizing in all browsers.
@@ -134,7 +147,12 @@
   /**
    * Add the correct font size in all browsers.
    */
-  
+  mark{
+    background: #FFFF;
+    color: #000;
+  }
+
+
   small {
     font-size: 80%;
   }
@@ -359,7 +377,7 @@
   /**
    * Add the correct display in IE 10+.
    */
-  
+  [hidden]
   template {
     display: none;
   }
