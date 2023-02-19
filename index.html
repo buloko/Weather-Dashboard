@@ -14,20 +14,28 @@
 </head>
 
 <body>
-  <header class="container-fluid text center bg-dark weather-header">
+  <header class="container-fluid text center bg-dark weather-header"/>
     <h1 id="title">Weather Dashboard</h1>
+    <form id = "search-form" class="col-lg-3 pb-3">
+      <input type="text" id="city-input" class="form-control" placeholder="Search for a city"
+      aria-label="Recipient's username" aria-describedby="button-addon2" />
+    <button class="btn btn-outline-secondary" type="button" id="search-btn">Search</button>
+    </form>
   </header>
-  <div class="row row-div">
-    <div class="col-lg-3 pb-3">
-      <div class="input-group mb-3">
-        <input type="text" id="city-input" class="form-control" placeholder="Search for a city"
-          aria-label="Recipient's username" aria-describedby="button-addon2" />
-        <button class="btn btn-outline-secondary" type="button" id="search-btn">Search</button>
-      </div>
+  <main class="col-sm-10">
+    <div class="card text-center">
+      <div class="card-header" id="date">Date:</div>
+      <div class="card-body">
+        <h2 class = "card-title">Temperature Today:</h2>
+        <p class ="card-text humidity">Humidity:</p>
+        <p class ="card-text wind">Wind Speed:</p>
     </div>
-  </div>
-  <div class="container main-weather"></div>
+    <div class="co"
+
+  </main>
+  <div class="container main-weather"></div>  
   <div class="container forecast"></div>
+
 
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
   "

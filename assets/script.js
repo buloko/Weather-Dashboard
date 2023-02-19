@@ -28,7 +28,7 @@ function fetchWeather(cityEl) {
         cityEl.textContent = 
               currentData.name + moment(currentData.dt, "X ").format("MM/DD/YYYY");
             var img = document.createElement("img");
-            img.src = 
+            img.src
     }
 
     .catch(() => {
