@@ -6,42 +6,29 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Weather Dashboard</title>
+  <link rel="stylesheet" href="./assets/style.css"/>
   <link rel="stylesheet" href="/assets/css/normalize.css">
-
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
-
-  <link rel="stylesheet" href="./assets/style.css"/>
-
 </head>
-
 <body>
-  <header class="container-fluid text center bg-dark weather-header"/>
-    <h1 id="title">Weather Dashboard</h1>
-    <form id = "search-form" class="col-lg-3 pb-3">
-      <input type="text" id="city-input" class="form-control" placeholder="Search for a city"
-      aria-label="Recipient's username" aria-describedby="button-addon2" />
-    <button class="btn btn-outline-secondary" type="button" id="search-btn">Search</button>
-    </form>
+  <header class="container-fluid text center bg-dark weather-header">
+    <h1 style="text-align: center; color:white">Weather Dashboard</h1>
+    <div class="row row-div">
+      <div class="col-lg-3 pb-3">
+          <div class="input-group mb-3">
+              <input type="text" id="city-input" class="form-control" placeholder="Search for city"
+                  aria-label="Recipient's username" aria-describedby="button-addon2">
+              <button class="btn btn-outline-secondary" type="button" id="search-btn">Search</button>
   </header>
-  <main class="col-sm-10">
-    <div class="card text-center">
-      <div class="card-header" id="date">Date:</div>
-      <div class="card-body">
-        <h2 class = "card-title">Temperature Today:</h2>
-        <p class ="card-text humidity">Humidity:</p>
-        <p class ="card-text wind">Wind Speed:</p>
-    </div>
-    </div>
-  </main>
+ 
   
   <div class="container main-weather"></div>  
   <div class="container forecast"></div>
 
 
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
-  "
   <script src="https://day.js.org/docs/en/plugin/utc"></script>
   <script src="https://day.js.org/docs/en/plugin/timezone"></script>
 
