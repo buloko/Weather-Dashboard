@@ -11,13 +11,32 @@ var humidity = document.querySelector("#humidity");
 var Uvindex = document.querySelector("#uv-index");
 var input = document.querySelector("#city-input");
 var searchBtn = document.querySelector("#search-btn");
-var searchCity = document.querySelector("#search-city");
+var findCity = document.querySelector("#find-city");
 var clearButton = document.querySelector("#clear-history");
 var searchHistory = [];
 
 // dayjs.extend(window.dayjs_plugin_utc);
 // dayjs.extend(window_.dayjs_plugin_timezone);
 
+// searches the city to see if it exists in the entries from the storage
+function find(c){
+    for (var i=0; i<searchHistory.length; i++){
+        if(c.toUpperCase()===searchHistory[i]){
+            return -1;
+        }
+    }
+    return 1;
+}
+// Display the current and future weather to the user after getting the city form from the input text box
+var APIKey="d3d868c125c76948db80ecf5668f6693";
+
+function displayWeather(event){
+    event.preventDefault();
+    if(findCity.val().trim()!==""){
+        city=findCity.val.trim();
+        currentWeather(city);
+    }
+}
 // function that gets us the specific cities weather information
 function fetchWeather(cityEl) {
   var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}`;
