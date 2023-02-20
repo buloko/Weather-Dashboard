@@ -1,13 +1,18 @@
-//Global Variables
+
+//variable declared to store the searched city
+var city="";
+//Global Variables/Declaration
 var APIKey = "d3d868c125c76948db80ecf5668f6693";
-var city = document.querySelector("#city");
-var tempEl = document.querySelector("#temp");
-var windEl = document.querySelector("#wind");
-var fiveDayWea = document.querySelector("#FiveDayWeather");
-var humidityEl = document.querySelector("#humid");
 var weatherAPIRootURL = `"http://api.openweathermap.org`;
-var inputEL = document.querySelector("#city-input");
+var city = document.querySelector("#city");
+var temp = document.querySelector("#temp");
+var wind = document.querySelector("#wind");
+var humidity = document.querySelector("#humidity");
+var Uvindex = document.querySelector("#uv-index");
+var input = document.querySelector("#city-input");
 var searchBtn = document.querySelector("#search-btn");
+var searchCity = document.querySelector("#search-city");
+var clearButton = document.querySelector("#clear-history");
 var searchHistory = [];
 
 // dayjs.extend(window.dayjs_plugin_utc);
