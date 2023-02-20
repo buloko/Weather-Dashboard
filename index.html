@@ -6,39 +6,98 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Weather Dashboard</title>
-  <link rel="stylesheet"  href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
   <!-- CSS only -->
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-   <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+    integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+    integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+    crossorigin="anonymous"></script>
 </head>
+
 <body>
+  <!-- container for the title -->
   <header class="container-fluid text center bg-dark weather-header">
     <h1 style="text-align: center; color:white">Weather Dashboard</h1>
     <div class="row row-div">
       <div class="col-lg-3 pb-3">
         <div class="input-group mb-3">
-          <input type="text" id="city-input" class="form-control" placeholder="Search for city"
-            aria-label="Recipient's username" aria-describedby="button-addon2">
-          <button class="btn btn-outline-secondary" type="button" id="search-btn">Search</button>
-        </header>
-      <div class="card text-center">
-        <div class="card-header">
-        Current Weather
+  </header>
+  <div class="container">
+    <!-- Row for searching for a city -->
+    <div class="row">
+      <div class="col-sm-4-bg-light">
+        <h2 class="pt-1"><strong>Search for a City:</strong></h2>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" id="search-city" aria-label="City Search"
+            aria-describedby="search-button">
+          <div class="input-group-append">
+          <button class="btn bg-primary text-light" id="search-button">Get Forecast</button>
+          </div>
         </div>
-        <div class="card-body">
-          <h5 class="card-title">Temperature</h5>
-          <p class="card-text">Humidity:</p>
-          <p class="card-text">Wind Speed:</p>
-        </div>
-        <div class="card-footer text-muted">
-          2 days ago
-        </div>
+        <button class="btn btn-primary" type="button" id="clear-history">Clear history</button>
+        <ul class="list group">
+
+        </ul>
+      </div>   
+      
+      <div class="container main-weather"></div>
+      <div class="col-sm-8">
+        <div class="row ml-2 border border-dark rounded">
+          <div class="col-sm-12" id="current-weather">
+              <h3 class="city-name mb-1 mt-2 bolder" id="current-city"></h3>
+              <p>Temperature:<span class="current" id="temperature"></span></p>
+              <p>Humidity:<span class="current" id="humidity"></span></p> 
+              <p>Wind Speed:<span class="current" id="wind-speed"></span></p>
+              <p>UV index:<span class="current rounded py-2 px-2 text-white" id="uv-index"></span></p> 
+          </div>
       </div>
-  <div class="container main-weather"></div>
-  <div class="container forecast"></div>
-  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
-  <script src="./assets/script.js"></script>
+        <div class="container forecast">
+          <div class="col-sm-12" id ="future-weather">
+            <h3>5-Day Forecast:</h3>
+            <div class="row text-light">
+                <div class="col-sm-2 bg-primary forecast text-white ml-2 mb-3 p-2 mt-2 rounded" >
+                    <p id="fDate0"></p>
+                    <p id="fImg0"></p>
+                    <p>Temp:<span id="fTemp0"></span></p>
+                    <p>Humidity:<span id="fHumidity0"></span></p>
+                    <p>Wind Speed:<span id="wind-speed"></span></p>
+                </div>
+                <div class="col-sm-2 bg-primary forecast text-white ml-2 mb-3 p-2 mt-2 rounded" >
+                    <p id="fDate1"></p>
+                    <p id="fImg1"></p>
+                    <p>Temp:<span id="fTemp1"></span></p>
+                    <p>Humidity:<span id="fHumidity1"></span></p>
+                    <p>Wind Speed:<span id="wind-speed"></span></p>
+                </div>
+                <div class="col-sm-2 bg-primary forecast text-white ml-2 mb-3 p-2 mt-2 rounded">
+                    <p id="fDate2"></p>
+                    <p id="fImg2"></p>
+                    <p>Temp:<span id="fTemp2"></span></p>
+                    <p>Humidity:<span id="fHumidity2"></span></p>
+                    <p>Wind Speed:<span id="wind-speed"></span></p>
+                </div>
+                <div class="col-sm-2 bg-primary forecast text-white ml-2 mb-3 p-2 mt-2 rounded">
+                    <p id="fDate3"></p>
+                    <p id="fImg3"></p>
+                    <p>Temp:<span id="fTemp3"></span></p>
+                    <p>Humidity:<span id="fHumidity3"></span></p>
+                    <p>Wind Speed:<span id="wind-speed"></span></p>
+                </div>
+                <div class="col-sm-2 bg-primary forecast text-white ml-2 mb-3 p-2 mt-2 rounded" >
+                    <p id="fDate4"></p>
+                    <p id="fImg4"></p>
+                    <p>Temp:<span id="fTemp4"></span></p>
+                    <p>Humidity:<span id="fHumidity4"></span></p>
+                    <p>Wind Speed:<span id="wind-speed"></span></p>
+                </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+        <script src="./assets/script.js"></script>
 </body>
 
 </html>
