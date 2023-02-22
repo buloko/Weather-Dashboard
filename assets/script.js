@@ -10,9 +10,10 @@ var wind = document.querySelector("#wind");
 var humidity = document.querySelector("#humidity");
 var Uvindex = document.querySelector("#uv-index");
 var input = document.querySelector("#city-input");
-var searchBtn = document.querySelector("#search-btn");
-var findCity = document.querySelector("#find-city");
+var searchBtn = document.querySelector("#search-button");
+var findCity = document.querySelector("#search-city");
 var clearButton = document.querySelector("#clear-history");
+var cityEl= document.querySelector("#city-date");
 var searchHistory = [];
 
 // dayjs.extend(window.dayjs_plugin_utc);
@@ -32,49 +33,36 @@ var APIKey="d3d868c125c76948db80ecf5668f6693";
 
 function displayWeather(event){
     event.preventDefault();
-    if(findCity.val().trim()!==""){
-        city=findCity.val.trim();
+    if(findCity.value().trim()!==""){
+        city=findCity.value.trim();
         currentWeather(city);
     }
 }
 // function that gets us the specific cities weather information
-function fetchWeather(cityEl) {
+function fetchWeather(city) {
   var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}`;
   fetch(queryURL)
-    .then((response) => {
-      return response.json();
-    })
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (currentData){
-        console.log(currentData);
-        cityEl.textContent = 
-              currentData.name + moment(currentData.dt, "X ").format("MM/DD/YYYY");
-            var img = document.createElement("img");
-            img.src
-    }
-
-    .catch(() => {
-      MessageChannel.textContent = "Please search for a valid city";
-    });
+    .then((response) => response.json())
+    .then((data) => {
+     //parse the response to display the current weather including the City name, the Date and the weather icon.
+     console.log(data)
+     //Data object from server side Api icon property.
+     cityEl.textContent =  data.name+ " " + moment(data.dt,"X").format("MM/DD/YYYY");
+     const icon = document.querySelector("#icon");
+     icon.setAttribute("src",`http://openweathermap.org/img/w/${data.weather[0].icon}.png`);
+     icon.setAttribute("class", "current");
+     var temp = document.querySelector("#temperature");
+     temp.textContent = data.main.temp + "°F";
+     var humidity = document.querySelector("#humidity");
+     humidity.textContent = "Humidity: " + data.main.humidity + "%";
+     var wind = document.querySelector("#wind");
+     wind.textContent = "Wind: " + data.wind.speed + "mph";
+   })
 }
-function fetchWeather(lat, lon) {
-  var url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIkey}`;
-  fetch(url).then((response) => {
-    return response.json;
-  });
-  .then(function (foreCastData) {
-    foreCastData.textContent= " ";
-    
-    console.log(foreCastData)
+     
 
-  }
-}
-
-searchBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  var userInput = inputEL.value;
-  console.log(userInput);
-  // apiFetch(userInput);
-});
+searchBtn.addEventListener("click",function(){
+    var searchedCity = findCity.value.trim()
+    fetchWeather(searchedCity)
+    console.log(findCity.value.trim())
+})
