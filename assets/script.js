@@ -59,8 +59,8 @@ function fetchWeather(city) {
      humidity.textContent = data.main.humidity + "%";
     //  var wind = document.querySelector("#wind-s");
      windSpeed.textContent = data.wind.speed + "mph";
-     var lat= data.coord.lat;
-     var lon= data.coord.lon;
+     var lat = data.coord.lat;
+     var lon = data.coord.lon;
      var queryUrl =`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${APIKey}`;
    fetch(queryUrl)
    .then((response) => response.json())
