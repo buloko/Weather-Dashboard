@@ -5,8 +5,8 @@ var city="";
 var APIKey = "d3d868c125c76948db80ecf5668f6693";
 var weatherAPIRootURL = `"http://api.openweathermap.org`;
 var city = document.querySelector("#city");
-var temp = document.querySelector("#temp");
-var wind = document.querySelector("#wind");
+var temp = document.querySelector("#temperature");
+var windSpeed = document.querySelector("#wind-speed");
 var humidity = document.querySelector("#humidity");
 var Uvindex = document.querySelector("#uv-index");
 var input = document.querySelector("#city-input");
@@ -44,25 +44,35 @@ function fetchWeather(city) {
   fetch(queryURL)
     .then((response) => response.json())
     .then((data) => {
+    
      //parse the response to display the current weather including the City name, the Date and the weather icon.
      console.log(data)
      //Data object from server side Api icon property.
-     cityEl.textContent =  data.name+ " " + moment(data.dt,"X").format("MM/DD/YYYY");
+    //  cityEl.textContent =  data.name+ " " + moment(data.dt,"X").format("MM/DD/YYYY");
      const icon = document.querySelector("#icon");
-     icon.setAttribute("src",`http://openweathermap.org/img/w/${data.weather[0].icon}.png`);
-     icon.setAttribute("class", "current");
+    //  icon.setAttribute("src",`http://openweathermap.org/img/w/${data.weather[0].icon}.png`);
+    //  icon.setAttribute("class", "current");
      var temp = document.querySelector("#temperature");
+     console.log(data.main.temp);
      temp.textContent = data.main.temp + "°F";
      var humidity = document.querySelector("#humidity");
-     humidity.textContent = "Humidity: " + data.main.humidity + "%";
-     var wind = document.querySelector("#wind");
-     wind.textContent = "Wind: " + data.wind.speed + "mph";
-   })
-}
-     
-
+     humidity.textContent = data.main.humidity + "%";
+    //  var wind = document.querySelector("#wind-s");
+     windSpeed.textContent = data.wind.speed + "mph";
+     var lat= data.coord.lat;
+     var lon= data.coord.lon;
+     var queryUrl =`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${APIKey}`;
+   fetch(queryUrl)
+   .then((response) => response.json())
+   .then((data) => {
+    console.log(data)
+    })});
+};
+  
+// &exclude=${part}
+//maybe use later for URL key
 searchBtn.addEventListener("click",function(){
     var searchedCity = findCity.value.trim()
     fetchWeather(searchedCity)
     console.log(findCity.value.trim())
-})
+});
