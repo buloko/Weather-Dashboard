@@ -1,13 +1,8 @@
-.header{
-    padding: 15px;
-    margin-bottom: 3vh;
+body{
+    background-color: gray;
 }
 
-#title{
-    color: whitesmoke !important;
-    text-align:center
+.row{
+color:bisque
 }
 
-.row-div{
-    margin-left: 5vh
-}
