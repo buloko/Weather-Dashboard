@@ -19,7 +19,9 @@ color:black;
 #past searches li{
     margin-bottom: 5px;
 }
+#container-main-weather{
 
+}
 .card {
     border: 1px solid #ccc;
   border-radius: 5px;
@@ -35,3 +37,11 @@ color:black;
     
     }
 
+.history-container{
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    border: none;
+    margin: 10px;
+    padding: 10px;
+  }
