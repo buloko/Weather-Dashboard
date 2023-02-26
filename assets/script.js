@@ -66,7 +66,7 @@ function fetchWeather(cityNameEl) {
     });
   }
 
-
+// function used to store past searches and turn them into buttons
 function renderPastSearches() {
   searchList.innerHTML = '';
 
@@ -88,6 +88,7 @@ function renderPastSearches() {
     });
   }
 }
+//function used to get forecast for the next 5 five days
 function getForecast(lat, lon) {
   queryUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}&units=imperial`;
   fetch(queryUrl)
@@ -127,7 +128,7 @@ function getForecast(lat, lon) {
   
 }
 
-
+//the search button
 searchBtn.addEventListener("click", function () {
   var searchedCity = findCity.value.trim();
   fetchWeather(searchedCity);
@@ -135,7 +136,7 @@ searchBtn.addEventListener("click", function () {
   console.log(findCity.value.trim());
   renderPastSearches();
 });
-
+//clear history button
 clearButton.addEventListener("click", function () {
   // Clear the search storage
   localStorage.removeItem("history");
@@ -149,25 +150,3 @@ clearButton.addEventListener("click", function () {
 renderPastSearches();
 });
 
-//         var date = document.createElement("h5");
-//         date.textContent = daysObject.format("MM/DD/YYYY");
-//         console.log(data.list[i]);
-//         var cardDiv = document.createElement("div");
-//         cardDiv.setAttribute("class", "card forecastCard");
-//         var testTemp = document.createElement("p");
-//         testTemp.textContent = "Temperature" + data.list[i].main.temp + "°F";
-//         const icon = document.createElement("img");
-//         icon.setAttribute(
-//           "src",
-//           `http://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png`
-//         );
-//         var testHumidity = document.createElement("p");
-//         testHumidity.textContent =
-//           "humidity " + data.list[i].main.humidity + "%";
-
-//         var testWind = document.createElement("p");
-//         testWind.textContent = "Wind " + data.list[i].wind.speed + "mph";
-//         cardDiv.append(date, icon, testTemp, testHumidity, testWind);
-//         container.append(cardDiv);
-//       }
-// } )};
