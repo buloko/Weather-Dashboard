@@ -147,7 +147,7 @@ clearButton.addEventListener("click", function () {
 
 // fetchWeather(cityNameEl);
 renderPastSearches();
-})
+});
 
 //         var date = document.createElement("h5");
 //         date.textContent = daysObject.format("MM/DD/YYYY");
