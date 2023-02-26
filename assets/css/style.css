@@ -3,6 +3,35 @@ body{
 }
 
 .row{
-color:bisque
+color:black;
 }
+
+#history{
+    background-color: gray;
+    padding:10px;
+}
+
+#past-searches{
+    list-style-type: none;
+    padding: 0;
+}
+
+#past searches li{
+    margin-bottom: 5px;
+}
+
+.card {
+    width: 500px;
+    height: 500px;
+    margin: 5x;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: lightblue;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 2rem;
+    position: relative;
+    top: -10px;
+    
+    }
 

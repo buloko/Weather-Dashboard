@@ -13,14 +13,11 @@ var searchBtn = document.querySelector("#search-button");
 var findCity = document.querySelector("#search-city");
 var clearButton = document.querySelector("#clear-history");
 
-searchBtn.addEventListener("click", function () {
-  var searchedCity = findCity.value.trim();
-  fetchWeather(searchedCity);
-  console.log(findCity.value.trim());
-});
+
 
 var searchStorage = JSON.parse(localStorage.getItem("history")) || [];
-var lastSearches = document.querySelector("#history");
+var searchList = document.querySelector("#past-searches");
+
 
 // Display the current and future weather to the user after getting the city form from the input text box
 function displayWeather(event) {
@@ -31,8 +28,8 @@ function displayWeather(event) {
   }
 }
 // function that gets us the specific cities weather information
-function fetchWeather(cityNameEL) {
-  var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityNameEL}&appid=${APIKey}`;
+function fetchWeather(cityNameEl) {
+  var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityNameEl}&appid=${APIKey}`;
   fetch(queryURL)
     .then(function (response){
       return response.json();
@@ -40,31 +37,52 @@ function fetchWeather(cityNameEL) {
     .then(function (currentData) {
       console.log(currentData);
       const dayJsObject = dayjs();
-      cityEl.textContent = currentData.name + dayjs(currentData.dt).format("MM/DD/YYYY");
+      cityEl.textContent = currentData.name + dayjs().format("MM/DD/YYYY");
       var img = document.createElement("img");
       img.src = `http://openweathermap.org/img/wn/${currentData.weather[0].icon}@2x.png`;
       cityEl.appendChild(img);
       var temp = document.querySelector("#temperature");
-      console.log(currentData.main.temp);
-      temp.textContent = currentData.main.temp + "°F";
+      var tempInKelvin = currentData.main.temp
+      var tempInFarenheit=(tempInKelvin-273.15)*9/5 + 32;
+      temp.textContent = tempInFarenheit.toFixed(2) + "°F";
       var humidity = document.querySelector("#humidity");
       humidity.textContent = currentData.main.humidity + "%";
       windSpeed.textContent = currentData.wind.speed + "mph";
       getForecast(currentData.coord.lat, currentData.coord.lon);
+       // add searched city to search history
+       if (!searchStorage.includes(cityNameEl)) {
+        // limit search history to 10 items
+        if (searchStorage.length >= 10) {
+          searchStorage.shift();
+        }
+        searchStorage.push(cityNameEl);
+        localStorage.setItem("history", JSON.stringify(searchStorage));
+        renderPastSearches();
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+      alert("Invalid city name. Please try again.");
     });
-}
+  }
+
 
 function renderPastSearches() {
-  lastSearches.innerHTML = "";
+  searchList.innerHTML = '';
 
   for (let i = 0; i < searchStorage.length; i++) {
-    var histList = document.createElement("button");
-    histList.classList.add("button-primary");
-    histList.textContent = searchStorage[i];
+    var histItem = document.createElement("li");
+    histItem.classList.add("list-group-item");
+    histItem.textContent = searchStorage[i];
 
-    lastSearches.append(histList);
+    var histButton = document.createElement("button");
+    histButton.classList.add("btn", "btn-primary", "btn-md", "mr-2");
+    histButton.textContent = searchStorage[i];
 
-    histList.addEventListener("click", function (event) {
+    histItem.appendChild(histButton);
+    searchList.appendChild(histItem);
+
+    histItem.addEventListener("click", function (event) {
       var searchText = event.target.innerHTML;
       fetchWeather(searchText);
     });
@@ -108,7 +126,29 @@ function getForecast(lat, lon) {
     });
   
 }
+
+
+searchBtn.addEventListener("click", function () {
+  var searchedCity = findCity.value.trim();
+  fetchWeather(searchedCity);
+  // saveSearches(searchedCity);
+  console.log(findCity.value.trim());
+  renderPastSearches();
 });
+
+clearButton.addEventListener("click", function () {
+  // Clear the search storage
+  localStorage.removeItem("history");
+  searchStorage = [];
+  // Remove the search history elements from the DOM
+  var pastSearches = document.getElementById("past-searches");
+  pastSearches.innerHTML = "";
+});
+
+// fetchWeather(cityNameEl);
+renderPastSearches();
+})
+
 //         var date = document.createElement("h5");
 //         date.textContent = daysObject.format("MM/DD/YYYY");
 //         console.log(data.list[i]);
