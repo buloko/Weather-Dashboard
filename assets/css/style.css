@@ -21,17 +21,17 @@ color:black;
 }
 
 .card {
-    width: 500px;
-    height: 500px;
-    margin: 5x;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: lightblue;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 2rem;
-    position: relative;
-    top: -10px;
+    border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 150px;
+  height: 200px;
+  display:relative;
+  text-align: center;
+  box-shadow: 2px 2px 5px #ccc;
+  font-size: 14px;
+  line-height: 1.2;
     
     }
 
